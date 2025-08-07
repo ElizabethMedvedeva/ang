@@ -1,4 +1,4 @@
-import { Component, computed, input, Input } from '@angular/core';
+import { Component, computed, EventEmitter, input, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -8,8 +8,10 @@ import { Component, computed, input, Input } from '@angular/core';
   styleUrl: './user.css'
 })
 export class UserComponent {
+  @Input({ required: true}) id!: string
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) name!: string;
+  @Output() select = new EventEmitter();
 
 
   get imagePath() {
@@ -27,5 +29,8 @@ export class UserComponent {
   // так как вариант для часто используемых и 
   // старых вариантов через декоратор (смотри выше, лекция 32)
 
-  onSelectUsers() { }
+  onSelectUser() { 
+    console.log("TUTA")
+    this.select.emit(this.id);
+  }
 }
