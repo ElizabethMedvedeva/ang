@@ -25,7 +25,7 @@
   *ngIf must be unlock in ts file of component before you can use it
   -->
   @if (selectedUser) {
-      <app-tasks [name]="selectedUser.name"></app-tasks>
+      <app-tasks [userId]="selectedUser.id " [name]="selectedUser.name"></app-tasks>
   } @else {
     <p id="fallback">Select a user to see their tasks!</p>
   }
